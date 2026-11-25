@@ -1,26 +1,123 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0rem; /* sudut tegas ala UI industrial */
+  --background: #f1f1ee;
+  --foreground: #111111;
+  --card: #fafaf8;
+  --card-foreground: #111111;
+  --popover: #fafaf8;
+  --popover-foreground: #111111;
+  --primary: #ffe500;
+  --primary-foreground: #111111;
+  --secondary: #e2e2dd;
+  --secondary-foreground: #111111;
+  --muted: #e7e7e2;
+  --muted-foreground: #5c5c57;
+  --accent: #111111;
+  --accent-foreground: #ffe500;
+  --destructive: #e5484d;
+  --border: #cfcfc8;
+  --input: #cfcfc8;
+  --ring: #ffe500;
+}
+.dark {
+  --background: #0e0e0f;
+  --foreground: ##ecece6;
+  --card: #17171a;
+  --card-foreground: ##ecece6;
+  --popover: #17171a;
+  --popover-foreground: ##ecece6;
+  --primary: #ffe500;
+  --primary-foreground: #111111;
+  --secondary: #222226;
+  --secondary-foreground: ##ecece6;
+  --muted: #1c1c20;
+  --muted-foreground: #9a9a94;
+  --accent: #ffe500;
+  --accent-foreground: #111111;
+  --destructive: #e5484d;
+  --border: #2a2a2e;
+  --input: #2a2a2e;
+  --ring: #ffe500;
+}
+
+.clip-corner {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+.hazard-stripe {
+  background: repeating-linear-gradient(-45deg, #111 0 8px, #ffe500 8px 16px);
+}
+.grid-bg {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading-src);
+  --font-mono: var(--font-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* 
+kuning = #fffb00
+hitam = #030303
+abu-abu terang = #d9d9d9
+abu-abu gelap = #a6a6a6
+*/
